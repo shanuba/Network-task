@@ -1,0 +1,73 @@
+root@RENWICK:~# nslookup guvi.in
+Server:         10.255.255.254
+Address:        10.255.255.254#53
+
+Non-authoritative answer:
+Name:   guvi.in
+Address: 172.67.70.207
+Name:   guvi.in
+Address: 104.26.4.88
+Name:   guvi.in
+Address: 104.26.5.88
+Name:   guvi.in
+Address: 2606:4700:20::681a:458
+Name:   guvi.in
+Address: 2606:4700:20::681a:558
+Name:   guvi.in
+Address: 2606:4700:20::ac43:46cf
+
+root@RENWICK:~# top
+top - 16:19:31 up 41 min,  1 user,  load average: 0.00, 0.00, 0.00
+Tasks:  41 total,   1 running,  40 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.2 sy,  0.0 ni, 99.6 id,  0.0 wa,  0.0 hi,  0.0 si,  0.
+MiB Mem :   7789.2 total,   6839.7 free,    544.0 used,    405.5 buff/cache
+MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   7012.8 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+
+      1 root      20   0  165740  11292   8360 S   1.0   0.1   0:27.94
+    452 root      20   0   44136  38184  10400 S   0.7   0.5   0:15.91
+      2 root      20   0    2476   1432   1320 S   0.0   0.0   0:00.00
+      6 root      20   0    2504    136    132 S   0.0   0.0   0:00.00
+     42 root      19  -1   31356  11720  10712 S   0.0   0.1   0:00.18
+     62 root      20   0   22108   5808   4412 S   0.0   0.1   0:00.29
+     76 root      20   0  152992   2200      4 S   0.0   0.0   0:00.00
+     77 root      20   0  152992   2208     12 S   0.0   0.0   0:00.00
+     78 root      20   0  377284  15464    416 S   0.0   0.2   0:01.25
+     90 root      20   0  153124   2232     32 S   0.0   0.0   0:00.00
+     97 root      20   0  152992   2248     56 S   0.0   0.0   0:00.00
+    101 root      20   0  302520   9276    212 S   0.0   0.1   0:00.18
+    105 root      20   0  152992    216     56 S   0.0   0.0   0:00.00
+    109 root      20   0  302520  13960    416 S   0.0   0.2   0:01.80
+    121 systemd+  20   0   25540  12600   8404 S   0.0   0.2   0:00.23
+    159 root      20   0    4308   2672   2424 S   0.0   0.0   0:00.01
+    163 message+  20   0    8584   4656   4116 S   0.0   0.1   0:00.09
+    169 root      20   0   30104  19004  10228 S   0.0   0.2   0:00.19
+    170 syslog    20   0  222404   7264   4448 S   0.0   0.1   0:00.03
+    172 root      20   0 1911356  44088  18504 S   0.0   0.6   0:01.04
+root@RENWICK:~# traceroute guvi.com
+traceroute to guvi.com (172.67.146.154), 30 hops max, 60 byte packets
+ 1  RENWICK.mshome.net (172.30.80.1)  0.668 ms  0.625 ms  0.606 ms
+ 2  * * *
+ 3  * * *
+ 4  * * *
+ 5  xe-0-1-0-ams-gw01.qatar.net.qa (89.211.3.142)  199.628 ms  199.619 ms xe-0-1-1-ams-gw01.qatar.net.qa (89.211.1.190)  200.947 ms
+ 6  * * *
+ 7  141.101.65.93 (141.101.65.93)  197.907 ms 141.101.65.113 (141.101.65.113)  114.702 ms  115.037 ms
+ 8  172.67.146.154 (172.67.146.154)  133.618 ms  134.953 ms  191.866 ms
+root@RENWICK:~# traceroute guvi.com google.com
+Cannot handle "packetlen" cmdline arg `google.com' on position 2 (argc 2)
+root@RENWICK:~# nmap -p guvi.com 9000
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-09-16 16:25 +03
+Found no matches for the service mask 'guvi.com' and your specified protocols
+QUITTING!
+root@RENWICK:~# nmap -p 9000 guvi.com
+Starting Nmap 7.80 ( https://nmap.org ) at 2024-09-16 16:25 +03
+Nmap scan report for guvi.com (172.67.146.154)
+Host is up (0.095s latency).
+Other addresses for guvi.com (not scanned): 104.21.79.166 2606:4700:3031::6815:4fa6 2606:4700:3037::ac43:929a
+
+PORT     STATE    SERVICE
+9000/tcp filtered cslistener
+
+Nmap done: 1 IP address (1 host up) scanned in 1.30 seconds
+root@RENWICK:~#
